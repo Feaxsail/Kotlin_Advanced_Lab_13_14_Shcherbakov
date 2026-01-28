@@ -50,7 +50,7 @@ fun main() {
         println(it)
     }
 
-    println("\n2. forEach() с форматированием:")
+    println("2. forEach() с форматированием:")
     cookies.forEach {
         println("${it.name} - $${it.price}")
     }
