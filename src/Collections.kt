@@ -125,4 +125,53 @@ fun main() {
     println("Объединение: ${set1.union(set2)}")
     println("Пересечение: ${set1.intersect(set2)}")
     println("Разность: ${set1.subtract(set2)}")
+
+    println("\n" + "=".repeat(50))
+    println("ШАГ 17: КАРТЫ (MAPS)")
+    println("=".repeat(50))
+
+    val solarSystem = mutableMapOf(
+        "Mercury" to 0,
+        "Venus" to 0,
+        "Earth" to 1,
+        "Mars" to 2,
+        "Jupiter" to 79,
+        "Saturn" to 82,
+        "Uranus" to 27,
+        "Neptune" to 14
+    )
+
+    println("\nКоличество планет в карте: ${solarSystem.size}")
+
+    solarSystem["Pluto"] = 5
+    println("После добавления Pluto: ${solarSystem.size}")
+
+    println("\nСпутников у Земли: ${solarSystem["Earth"]}")
+    println("Спутников у Pluto: ${solarSystem["Pluto"]}")
+
+    println("Спутников у Цереры: ${solarSystem["Ceres"]}")
+
+    val removedValue = solarSystem.remove("Pluto")
+    println("\nУдалено значение: $removedValue")
+    println("После удаления Pluto: ${solarSystem.size}")
+
+    solarSystem["Jupiter"] = 80
+    println("\nОбновлённое количество спутников Юпитера: ${solarSystem["Jupiter"]}")
+
+    println("\nВсе планеты и их спутники:")
+    for ((planet, moons) in solarSystem) {
+        println("$planet: $moons спутников")
+    }
+
+    println("\nКлючи (планеты): ${solarSystem.keys}")
+    println("Значения (спутники): ${solarSystem.values}")
+
+    println("\nСодержит ключ 'Earth'? ${solarSystem.containsKey("Earth")}")
+    println("Содержит значение 1? ${solarSystem.containsValue(1)}")
+
+    solarSystem.putIfAbsent("Earth", 2)
+    println("\nПосле putIfAbsent 'Earth' с 2: ${solarSystem["Earth"]}")
+
+    solarSystem.putIfAbsent("New Planet", 10)
+    println("После putIfAbsent 'New Planet' с 10: ${solarSystem["New Planet"]}")
 }
