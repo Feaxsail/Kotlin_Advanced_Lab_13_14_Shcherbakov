@@ -1,33 +1,27 @@
-enum class Difficulty {
-    EASY, MEDIUM, HARD
-}
-
-class Question<T>(
+data class Question<T>(
     val questionText: String,
     val answer: T,
     val difficulty: Difficulty
 )
 
+enum class Difficulty {
+    EASY, MEDIUM, HARD
+}
+
 fun main() {
     val question1 = Question<String>(
         "Речка спятила с ума – По домам пошла сама. ___",
         "водопровод",
-        Difficulty.MEDIUM  // Используем enum константы
+        Difficulty.MEDIUM
     )
 
-    val question2 = Question<Boolean>(
-        "Солнце встаёт на востоке.",
-        true,
-        Difficulty.EASY
+    println(question1.toString())
+
+    val question1Copy = Question<String>(
+        "Речка спятила с ума – По домам пошла сама. ___",
+        "водопровод",
+        Difficulty.MEDIUM
     )
 
-    val question3 = Question<Int>(
-        "Сколько будет 2 + 2?",
-        4,
-        Difficulty.EASY
-    )
-
-    println("Вопрос 1 сложность: ${question1.difficulty}")
-    println("Вопрос 2 сложность: ${question2.difficulty}")
-    println("Вопрос 3 сложность: ${question3.difficulty}")
+    println("Равны ли объекты? ${question1 == question1Copy}")
 }
