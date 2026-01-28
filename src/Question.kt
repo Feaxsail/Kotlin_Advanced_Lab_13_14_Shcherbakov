@@ -1,4 +1,3 @@
-
 data class Question<T>(
     val questionText: String,
     val answer: T,
@@ -9,10 +8,12 @@ enum class Difficulty {
     EASY, MEDIUM, HARD
 }
 
+
 object StudentProgress {
     var answered: Int = 0
     var total: Int = 10
 }
+
 
 class Quiz1 {
     val question1 = Question<String>(
@@ -60,15 +61,31 @@ class Quiz {
     )
 }
 
+
+val Quiz.StudentProgress.progressText: String
+    get() = "$answered of $total answered"
+
+fun Quiz.StudentProgress.printProgressBar() {
+    repeat(answered) { print("▓") }
+    repeat(total - answered) { print("▒") }
+    println()
+    println(progressText)
+}
+
+
+
+
+
 fun main() {
-    println("=== ШАГ 10: Singleton и companion object ===")
 
-    println("До переноса: ${StudentProgress.answered} of ${StudentProgress.total} answered.")
 
-    println("После переноса: ${Quiz.answered} of ${Quiz.total} answered.")
+    println(" ШАГ 11")
 
-    val quiz = Quiz()
-    println("Первый вопрос: ${quiz.question1.questionText}")
+    println("Прогресс (extension): ${Quiz.progressText}")
+
+
+    println("Прогресс-бар (extension):")
+    Quiz.printProgressBar()
 
 
 }
